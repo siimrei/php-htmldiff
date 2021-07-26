@@ -339,7 +339,7 @@
 			$positionInNew = 0;
 			$operations = array();
 			$matches = $this->MatchingBlocks();
-			$matches[] = new Match( count( $this->oldWords ), count( $this->newWords ), 0 );
+			$matches[] = new DiffMatch( count( $this->oldWords ), count( $this->newWords ), 0 );
 			foreach(  $matches as $i => $match ) {
 				$matchStartsAtCurrentPositionInOld = ( $positionInOld == $match->StartInOld );
 				$matchStartsAtCurrentPositionInNew = ( $positionInNew == $match->StartInNew );
@@ -422,11 +422,11 @@
 				}
 				$matchLengthAt = $newMatchLengthAt;
 			}
-			return $bestMatchSize != 0 ? new Match( $bestMatchInOld, $bestMatchInNew, $bestMatchSize ) : null;
+			return $bestMatchSize != 0 ? new DiffMatch( $bestMatchInOld, $bestMatchInNew, $bestMatchSize ) : null;
 		}
 	}
 
-	class Match {
+	class DiffMatch {
 
 		public $StartInOld;
 		public $StartInNew;
